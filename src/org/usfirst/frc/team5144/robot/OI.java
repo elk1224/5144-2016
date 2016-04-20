@@ -8,15 +8,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-/**
- * This class is the glue that binds the controls on the physical operator
- * interface to the commands and command groups that allow control of the robot.
- */
 public class OI {
 	private Joystick leftJoystick = new Joystick(RobotMap.joystickLeftChannel);
     private Joystick rightJoystick = new Joystick(RobotMap.joystickRightChannel);
     private Joystick xboxController = new Joystick(RobotMap.xboxControllerChannel);
-    //Not sure if it is correct to put diff axis here and then use an accessor to pull them for commands
     //private double driveStickY = rightJoystick.getY();
     //private double driveStickX = rightJoystick.getX();
    // private boolean driveTrigger = rightJoystick.getRawButton(1);
@@ -34,7 +29,8 @@ public class OI {
     private double xboxLY = xboxController.getRawAxis(1); //Left joystick y-axis
     //private double xboxRX = xboxController.getRawAxis(4); //Right joystick x-axis
     //private double xboxRY = xboxController.getRawAxis(5); //Right joystick y-axis
-    //private Button xboxStart = new JoystickButton(xboxController, 9); //Start button
+    //private Button xboxStart = new JoystickButton(xboxController, 9); //Start button (not working)
+    //xboxBack does not work
     //private double xboxLT = xboxController.getRawAxis(2); //Left trigger
     //private double xboxRT = xboxController.getRawAxis(3); //Right trigger
     
