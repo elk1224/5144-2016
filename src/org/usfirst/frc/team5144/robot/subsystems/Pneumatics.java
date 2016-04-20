@@ -32,7 +32,15 @@ public class Pneumatics extends Subsystem {
     	armSolenoidDown = new DoubleSolenoid(RobotMap.armSolenoidDownForward, RobotMap.armSolenoidDownReverse);
     }
     
-    public void compressorLog(){
+    public void LaunchSolenoidOn(){
+    	launchSolenoid.set(true);
+    }
+    
+    public void LaunchSolenoidOff(){
+    	launchSolenoid.set(false);
+    }
+    
+    public void CompressorLog(){
 		SmartDashboard.putBoolean("Comp Enabled", c.enabled());
     	SmartDashboard.putBoolean("Comp Pressure Switch", c.getPressureSwitchValue());
     	SmartDashboard.putNumber("Comp Current", c.getCompressorCurrent());
@@ -40,7 +48,7 @@ public class Pneumatics extends Subsystem {
     }
     
     public void log(){
-    	compressorLog();
+    	CompressorLog();
     }
     
 }

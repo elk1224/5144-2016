@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5144.robot;
 
+import org.usfirst.frc.team5144.robot.commands.LaunchSolenoid;
 import org.usfirst.frc.team5144.robot.commands.StartCamera1;
 import org.usfirst.frc.team5144.robot.commands.StartCamera2;
 
@@ -28,18 +29,19 @@ public class OI {
     //private Button xboxX = new JoystickButton(xboxController, 3); //X button
     //private Button xboxY = new JoystickButton(xboxController, 4); //Y button
     //private Button xboxRB = new JoystickButton(xboxController, 6); //Right Bumper
-    //private Button xboxLB = new JoystickButton(xboxController, 5); //Left Bumper
+    private Button xboxLB = new JoystickButton(xboxController, 5); //Left Bumper
     //private double xboxLX = xboxController.getRawAxis(0); //Left joystick x-axis
     private double xboxLY = xboxController.getRawAxis(1); //Left joystick y-axis
     //private double xboxRX = xboxController.getRawAxis(4); //Right joystick x-axis
     //private double xboxRY = xboxController.getRawAxis(5); //Right joystick y-axis
     //private Button xboxStart = new JoystickButton(xboxController, 9); //Start button
-    //private double xboxLT = xboxController.getRawAxis(2); //Left trigger //check axis number
-    //private double xboxRT = xboxController.getRawAxis(3); //Right trigger //check axis number
+    //private double xboxLT = xboxController.getRawAxis(2); //Left trigger
+    //private double xboxRT = xboxController.getRawAxis(3); //Right trigger
     
     public OI(){
     	driveStick2.whenPressed(new StartCamera1());
     	driveStick3.whenPressed(new StartCamera2());
+    	xboxLB.whileHeld(new LaunchSolenoid());
     }
     
     public Joystick getLeftJoystick() {

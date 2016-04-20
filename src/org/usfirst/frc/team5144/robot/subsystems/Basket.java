@@ -6,10 +6,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 
 import org.usfirst.frc.team5144.robot.RobotMap;
-<<<<<<< HEAD
 import org.usfirst.frc.team5144.robot.commands.BasketWithJoystick;
-=======
->>>>>>> ee061f373fe5d47e6ff8e154a523c383d06a3796
 
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -35,10 +32,7 @@ public class Basket extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-<<<<<<< HEAD
 		setDefaultCommand(new BasketWithJoystick());
-=======
->>>>>>> ee061f373fe5d47e6ff8e154a523c383d06a3796
     }
 	
 	public void basket(double speed){
