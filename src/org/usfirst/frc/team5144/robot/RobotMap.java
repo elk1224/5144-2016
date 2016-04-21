@@ -16,7 +16,7 @@ public class RobotMap {
     public static final int limitFrontChannel = 1;
     
     //ANALOG
-    //final int ultrasonicChannel = 3; 
+    public static final int ultrasonicChannel = 3; 
     
 	//MOTOR CONT.
     public static final int leftFrontDriveChannel = 5; 

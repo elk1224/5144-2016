@@ -3,6 +3,8 @@ package org.usfirst.frc.team5144.robot.subsystems;
 import org.usfirst.frc.team5144.robot.RobotMap;
 import org.usfirst.frc.team5144.robot.commands.DriveWithJoysticks;
 
+import edu.wpi.first.wpilibj.AnalogAccelerometer;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -18,6 +20,7 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
 	private SpeedController leftFrontDrive, leftRearDrive, rightFrontDrive, rightRearDrive;
 	private RobotDrive drive;
+	private AnalogInput ultrasonic;
 
     public void initDefaultCommand() {
     	setDefaultCommand(new DriveWithJoysticks());
@@ -30,6 +33,7 @@ public class DriveTrain extends Subsystem {
     	rightFrontDrive = new Talon(RobotMap.rightFrontDriveChannel);
     	rightRearDrive = new Talon(RobotMap.rightRearDriveChannel);
     	drive = new RobotDrive(leftFrontDrive, leftRearDrive, rightFrontDrive, rightRearDrive);
+    	ultrasonic = new AnalogInput(RobotMap.ultrasonicChannel);
     }
 
     public void drive(double left, double right){
@@ -42,6 +46,10 @@ public class DriveTrain extends Subsystem {
     
     public void stop(){
     	drive.tankDrive(0, 0);
+    }
+    //Update with conversion
+    public double getDistance(){
+    	return ultrasonic.getVoltage();
     }
     
     public void log(){
