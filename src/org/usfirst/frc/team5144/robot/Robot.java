@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
-
+	//This it robit
 	public static OI oi;
 	public static DriveTrain drivetrain;
 	public static Shooter shooter;
@@ -59,6 +59,7 @@ public class Robot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		log();
 	}
 
     public void autonomousInit() {
