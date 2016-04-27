@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5144.robot;
 
 import org.usfirst.frc.team5144.robot.commands.LaunchSolenoid;
+import org.usfirst.frc.team5144.robot.commands.NAVXZeroYaw;
 import org.usfirst.frc.team5144.robot.commands.StartCamera1;
 import org.usfirst.frc.team5144.robot.commands.StartCamera2;
 
@@ -14,7 +15,7 @@ public class OI {
     private Joystick xboxController = new Joystick(RobotMap.xboxControllerChannel);
     //private double driveStickY = rightJoystick.getY();
     //private double driveStickX = rightJoystick.getX();
-   // private boolean driveTrigger = rightJoystick.getRawButton(1);
+    private Button driveTrigger = new JoystickButton(rightJoystick, 1);
     private Button driveStick2 = new JoystickButton(rightJoystick, 2); //Button 2 on the driveJoystick
     private Button driveStick3 = new JoystickButton(rightJoystick, 3);
     //private double sens = (-rightJoystick.getZ() + 1) / 2.0; //Sets the sensitivity of the drive joystick
@@ -35,6 +36,9 @@ public class OI {
     //private double xboxRT = xboxController.getRawAxis(3); //Right trigger
     
     public OI(){
+    	//TEMP
+    	driveTrigger.whenPressed(new NAVXZeroYaw());
+    	
     	driveStick2.whenPressed(new StartCamera1());
     	driveStick3.whenPressed(new StartCamera2());
     	xboxLB.whileHeld(new LaunchSolenoid());

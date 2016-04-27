@@ -23,6 +23,10 @@ public class Basket extends Subsystem {
 	private DigitalInput limitBack, limitFront;
 	private Encoder encoder;
 	
+	public void initDefaultCommand() {
+		setDefaultCommand(new BasketWithJoystick());
+    }
+	
 	public Basket(){
 		basketDrive = new Talon(RobotMap.basketChannel);
 		limitFront = new DigitalInput(RobotMap.limitFrontChannel);
@@ -30,10 +34,6 @@ public class Basket extends Subsystem {
 		encoder = new Encoder(RobotMap.encoderA, RobotMap.encoderB, true, EncodingType.k4X);
 		encoder.setDistancePerPulse(1.0/1.31);
 	}
-
-	public void initDefaultCommand() {
-		setDefaultCommand(new BasketWithJoystick());
-    }
 	
 	public void basket(double speed){
 		basketDrive.set(speed);

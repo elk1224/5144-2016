@@ -25,6 +25,13 @@ public class Camera extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
+    /**
+     * Constructs the camera object, 
+     * creates a frame that will hold the images from the camera,
+     * creates a session for each of the two cameras,
+     * sets the current session to the first session,
+     * and starts to grab images from the first session
+     */
     public Camera(){
     	super();
         this.frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
@@ -41,17 +48,31 @@ public class Camera extends Subsystem {
         NIVision.IMAQdxConfigureGrab(this.currSession);
     }
     
+    /**
+     * Starts grabbing the frames from the camera assigned to the
+     * current session
+     */
     public void startVision(){
         NIVision.IMAQdxGrab(this.currSession, this.frame, 1);
         CameraServer.getInstance().setImage(this.frame);
     }
     
+    /**
+     * Stops pulling the current session,
+     * changes the current session to the first session, 
+     * and runs the current session
+     */
     public void setCamera1(){
     	NIVision.IMAQdxStopAcquisition(this.currSession);
  		this.currSession = this.session;
         NIVision.IMAQdxConfigureGrab(this.currSession);
     }
     
+    /**
+     * Stops pulling the current session,
+     * changes the current session to the second session,
+     * and runs the current session
+     */
     public void setCamera2(){
     	NIVision.IMAQdxStopAcquisition(this.currSession);
  		this.currSession = this.session2;

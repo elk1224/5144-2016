@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
-	//This it robit
+
 	public static OI oi;
 	public static DriveTrain drivetrain;
 	public static Shooter shooter;
@@ -34,11 +34,11 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	pneumatics = new Pneumatics();
     	drivetrain = new DriveTrain();
     	shooter = new Shooter();
     	basket = new Basket();
     	camera = new Camera();
-    	pneumatics = new Pneumatics();
 		oi = new OI();
 		
         chooser = new SendableChooser();
