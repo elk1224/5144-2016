@@ -40,7 +40,6 @@ public class Pneumatics extends Subsystem {
     	launchSolenoid.set(false);
     }
     
-<<<<<<< HEAD
     public void ArmSolenodTopForward(){
     	armSolenoidTop.set(DoubleSolenoid.Value.kForward);
     }
@@ -66,8 +65,6 @@ public class Pneumatics extends Subsystem {
     }
     
     
-=======
->>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
     public void CompressorLog(){
 		SmartDashboard.putBoolean("Comp Enabled", c.enabled());
     	SmartDashboard.putBoolean("Comp Pressure Switch", c.getPressureSwitchValue());

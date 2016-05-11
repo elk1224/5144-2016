@@ -5,7 +5,7 @@ import org.usfirst.frc.team5144.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Moves the solenoid on the arm out
  */
 public class ArmSolenoidDownForward extends Command {
 

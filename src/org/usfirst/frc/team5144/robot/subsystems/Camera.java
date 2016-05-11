@@ -9,9 +9,6 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Camera extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 	
 	int session;
 	Image frame;
@@ -48,31 +45,25 @@ public class Camera extends Subsystem {
         NIVision.IMAQdxConfigureGrab(this.currSession);
     }
     
-    /**
-     * Starts grabbing the frames from the camera assigned to the
-     * current session
-     */
+    /**Starts grabbing the frames from the camera assigned to the
+     * current session*/
     public void startVision(){
         NIVision.IMAQdxGrab(this.currSession, this.frame, 1);
         CameraServer.getInstance().setImage(this.frame);
     }
     
-    /**
-     * Stops pulling the current session,
+    /**Stops pulling the current session,
      * changes the current session to the first session, 
-     * and runs the current session
-     */
+     * and runs the current session*/
     public void setCamera1(){
     	NIVision.IMAQdxStopAcquisition(this.currSession);
  		this.currSession = this.session;
         NIVision.IMAQdxConfigureGrab(this.currSession);
     }
     
-    /**
-     * Stops pulling the current session,
+    /**Stops pulling the current session,
      * changes the current session to the second session,
-     * and runs the current session
-     */
+     * and runs the current session*/
     public void setCamera2(){
     	NIVision.IMAQdxStopAcquisition(this.currSession);
  		this.currSession = this.session2;

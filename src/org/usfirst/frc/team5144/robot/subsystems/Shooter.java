@@ -24,7 +24,6 @@ public class Shooter extends Subsystem {
 		backLoader = new Talon(RobotMap.backLoaderChannel);
 	}
     
-<<<<<<< HEAD
     public void shooterOut(){
     	frontLoader.set(-.5);
     	backLoader.set(.5);
@@ -41,22 +40,13 @@ public class Shooter extends Subsystem {
     }
     
     public void shooterIn(double speed){
-=======
-    public void shooterOut(double speed){
->>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
     	frontLoader.set(speed);
     	backLoader.set(-speed);
     }
     
-<<<<<<< HEAD
     public void stop(){
     	frontLoader.set(0);
     	backLoader.set(0);
-=======
-    public void shooterIn(double speed){
-    	frontLoader.set(-speed);
-    	backLoader.set(speed);
->>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
     }
     
     public void log(){

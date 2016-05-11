@@ -13,7 +13,7 @@ public class StartCamera2 extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.camera);
-    }
+    	}
 
     // Called just before this Command runs the first time
     protected void initialize() {

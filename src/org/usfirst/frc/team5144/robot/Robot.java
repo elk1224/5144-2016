@@ -1,18 +1,13 @@
 
 package org.usfirst.frc.team5144.robot;
 
-<<<<<<< HEAD
 import org.usfirst.frc.team5144.robot.commands.AutoBasket;
 import org.usfirst.frc.team5144.robot.commands.AutoDriveAndShoot;
 import org.usfirst.frc.team5144.robot.commands.AutoPickUpBallAndShoot;
 import org.usfirst.frc.team5144.robot.commands.AutoShoot;
 import org.usfirst.frc.team5144.robot.commands.DriveForward;
 import org.usfirst.frc.team5144.robot.subsystems.Basket;
-=======
-import org.usfirst.frc.team5144.robot.commands.DriveForward;
-import org.usfirst.frc.team5144.robot.subsystems.Basket;
 import org.usfirst.frc.team5144.robot.subsystems.Camera;
->>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
 import org.usfirst.frc.team5144.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5144.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team5144.robot.subsystems.Shooter;
@@ -28,117 +23,94 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
 
+	/**Define the subsystems*/
 	public static OI oi;
 	public static DriveTrain drivetrain;
 	public static Shooter shooter;
 	public static Basket basket;
-<<<<<<< HEAD
-	//public static Camera camera;
-=======
 	public static Camera camera;
->>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
 	public static Pneumatics pneumatics;
-
+	
+	/**Create the command and the selection dialog
+	 * for autonomous*/
     Command autonomousCommand;
     SendableChooser chooser;
-
-<<<<<<< HEAD
-=======
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
->>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
+    
+    /**called once each time the robot starts up*/
     public void robotInit() {
+    	/**Construct the subsystems*/
     	pneumatics = new Pneumatics();
     	drivetrain = new DriveTrain();
     	shooter = new Shooter();
     	basket = new Basket();
-<<<<<<< HEAD
-    	//camera = new Camera();
-=======
     	camera = new Camera();
->>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
+    	//Make sure OI is constructed after any subsystems that require button
+    	//input or else the program will crash
 		oi = new OI();
 		
+		/**Construct the dialog for the dashboard and add options that
+		 * are assigned to commands that will be called when autonomous starts*/
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new WaitCommand(0));
-<<<<<<< HEAD
         chooser.addObject("Test", new AutoBasket(2.4, .5));
         chooser.addObject("Drive Auto", new DriveForward(2, .5));
         chooser.addObject("Auto Shoot", new AutoShoot());
         chooser.addObject("Drive and Shoot", new AutoDriveAndShoot());
         chooser.addObject("Pick up and Shoot", new AutoPickUpBallAndShoot());
         //chooser.addObject("Auto Line", new DriveForward(1.5, .75));
-=======
-        chooser.addObject("Drive Auto", new DriveForward(2, .5));
-        chooser.addObject("Auto Line", new DriveForward(1.5, .75));
->>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
         SmartDashboard.putData("Auto mode", chooser);
     }
 	
-	/**
-     * This function is called once each time the robot enters Disabled mode.
-     * You can use it to reset any subsystem information you want to clear when
-	 * the robot is disabled.
-     */
+	/**called once each time the robot enters Disabled mode*/
     public void disabledInit(){
 
     }
 	
+    /**called periodically while the robot is in Disabled mode*/
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		//Start the camera server and create the frames for
+		//the dashboard and start the first camera
+		Robot.camera.startVision();
+		Robot.camera.setCamera1();
 		log();
 	}
-
+	
+	/**called once each time the robot enters Autonomous mode*/
     public void autonomousInit() {
+    	//Sets the autonomous command to the command selected from the dashboard
         autonomousCommand = (Command) chooser.getSelected();
+        //Starts the command if a selection has been made
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
-    /**
-     * This function is called periodically during autonomous
-     */
+    /**called periodically while the robot is in Autonomous mode*/
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }
-
+    
+    /**called once each time the robot enters TeleOperated mode*/
     public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
+		//Stops the command from Autonomous mode if it is stil running
         if (autonomousCommand != null) autonomousCommand.cancel();
     }
 
-    /**
-     * This function is called periodically during operator control
-     */
+    /**called periodically while the robot is in TeleOperated mode*/
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-<<<<<<< HEAD
-        //Robot.camera.startVision();
-        log();
-=======
         Robot.camera.startVision();
->>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
+        log();
     }
     
-    /**
-     * This function is called periodically during test mode
-     */
+    /**called periodically while the robot is in test mode*/
     public void testPeriodic() {
         LiveWindow.run();
     }
     
+    /**display driverstation information from the subsystems*/
     public void log(){
     	drivetrain.log();
-<<<<<<< HEAD
     	//shooter.log();
     	//basket.log();
-=======
-    	shooter.log();
-    	basket.log();
->>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
     }
 }

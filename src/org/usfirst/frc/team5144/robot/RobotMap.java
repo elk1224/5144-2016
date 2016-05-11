@@ -39,7 +39,7 @@ public class RobotMap {
     public static final int encoderA = 4;
     public static final int encoderB = 3;
     
-    //CAMERA
-    public static final String frontCamera = "cam0";
-    public static final String rearCamera = "cam1";
+    //CAMERA (names found on the web dashboard)
+    public static final String frontCamera = "cam2";
+    public static final String rearCamera = "cam3";
 }
