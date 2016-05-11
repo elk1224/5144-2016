@@ -1,7 +1,10 @@
 package org.usfirst.frc.team5144.robot.subsystems;
 
+<<<<<<< HEAD
+=======
 import java.io.PipedWriter;
 
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
 import org.usfirst.frc.team5144.robot.RobotMap;
 import org.usfirst.frc.team5144.robot.commands.DriveWithJoysticks;
 
@@ -14,6 +17,10 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SPI;
+<<<<<<< HEAD
+import edu.wpi.first.wpilibj.SerialPort;
+=======
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -33,7 +40,12 @@ public class DriveTrain extends Subsystem {
 	//Move NAVX to its own separate subsystem with the commands
 	//pertaining to the subsystem in their own package
 	//NAVX
+<<<<<<< HEAD
+	//private AHRS ahrs; 
+	
+=======
 	private AHRS ahrs;    
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
  
     public void initDefaultCommand() {
     	setDefaultCommand(new DriveWithJoysticks());
@@ -46,6 +58,22 @@ public class DriveTrain extends Subsystem {
     	rightFrontDrive = new Talon(RobotMap.rightFrontDriveChannel);
     	rightRearDrive = new Talon(RobotMap.rightRearDriveChannel);
     	drive = new RobotDrive(leftFrontDrive, leftRearDrive, rightFrontDrive, rightRearDrive);
+<<<<<<< HEAD
+    	ultrasonic = new AnalogInput(RobotMap.ultrasonicChannel);    	
+    	//ahrs = new AHRS(SerialPort.Port.kUSB);
+    }
+
+    public void drive(double forward, double rotate){
+    	drive.arcadeDrive(-forward, -rotate);
+    }
+    //Check for flips
+    public void drive(Joystick joy){
+    	drive.arcadeDrive(joy);
+    }
+    
+    public void stop(){
+    	drive.arcadeDrive(0, 0);
+=======
     	ultrasonic = new AnalogInput(RobotMap.ultrasonicChannel);
     	
     	ahrs = new AHRS(SPI.Port.kMXP);
@@ -61,10 +89,18 @@ public class DriveTrain extends Subsystem {
     
     public void stop(){
     	drive.tankDrive(0, 0);
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
     }
     //Update with conversion
     public double getDistance(){
     	return ultrasonic.getVoltage();
+<<<<<<< HEAD
+    }   
+    
+    public void log(){
+    }
+}
+=======
     }
     //Remove?
     public AHRS getNAVX(){
@@ -159,3 +195,4 @@ public class DriveTrain extends Subsystem {
     }
 }
 
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b

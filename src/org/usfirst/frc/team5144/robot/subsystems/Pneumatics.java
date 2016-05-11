@@ -40,6 +40,34 @@ public class Pneumatics extends Subsystem {
     	launchSolenoid.set(false);
     }
     
+<<<<<<< HEAD
+    public void ArmSolenodTopForward(){
+    	armSolenoidTop.set(DoubleSolenoid.Value.kForward);
+    }
+    
+    public void ArmSolenoidTopReverse(){
+    	armSolenoidTop.set(DoubleSolenoid.Value.kReverse);
+    }
+    
+    public void ArmSolenoidTopOff(){
+    	armSolenoidTop.set(DoubleSolenoid.Value.kOff);
+    }
+    
+    public void ArmSolenoidDownForward(){
+    	armSolenoidDown.set(DoubleSolenoid.Value.kForward);
+    }
+    
+    public void ArmSolenoidDownReverse(){
+    	armSolenoidDown.set(DoubleSolenoid.Value.kReverse);
+    }
+    
+    public void ArmSolenoidDownOff(){
+    	armSolenoidDown.set(DoubleSolenoid.Value.kOff);
+    }
+    
+    
+=======
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
     public void CompressorLog(){
 		SmartDashboard.putBoolean("Comp Enabled", c.enabled());
     	SmartDashboard.putBoolean("Comp Pressure Switch", c.getPressureSwitchValue());

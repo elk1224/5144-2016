@@ -1,9 +1,19 @@
 package org.usfirst.frc.team5144.robot;
 
+<<<<<<< HEAD
+import org.usfirst.frc.team5144.robot.commands.ArmSolenoidDownForward;
+import org.usfirst.frc.team5144.robot.commands.ArmSolenoidDownReverse;
+import org.usfirst.frc.team5144.robot.commands.ArmSolenoidTopForward;
+import org.usfirst.frc.team5144.robot.commands.ArmSolenoidTopReverse;
+import org.usfirst.frc.team5144.robot.commands.LaunchSolenoid;
+import org.usfirst.frc.team5144.robot.commands.ShooterWheelsIn;
+import org.usfirst.frc.team5144.robot.commands.ShooterWheelsOut;
+=======
 import org.usfirst.frc.team5144.robot.commands.LaunchSolenoid;
 import org.usfirst.frc.team5144.robot.commands.NAVXZeroYaw;
 import org.usfirst.frc.team5144.robot.commands.StartCamera1;
 import org.usfirst.frc.team5144.robot.commands.StartCamera2;
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -15,6 +25,26 @@ public class OI {
     private Joystick xboxController = new Joystick(RobotMap.xboxControllerChannel);
     //private double driveStickY = rightJoystick.getY();
     //private double driveStickX = rightJoystick.getX();
+<<<<<<< HEAD
+    private Button rightDriveTrigger = new JoystickButton(rightJoystick, 1);
+    private Button rightDriveStick2 = new JoystickButton(rightJoystick, 2); //Button 2 on the driveJoystick
+    private Button rightDriveStick3 = new JoystickButton(rightJoystick, 3);
+    private Button rightDriveStick4 = new JoystickButton(rightJoystick, 4);
+    private Button rightDriveStick5 = new JoystickButton(rightJoystick, 5);
+    private Button rightDriveStick6 = new JoystickButton(rightJoystick, 6);
+    //private double sens = (-rightJoystick.getZ() + 1) / 2.0; //Sets the sensitivity of the drive joystick
+    //Xbox controller
+    private Button xboxA = new JoystickButton(xboxController, 1); //A button
+    //private Button xboxB = new JoystickButton(xboxController, 2); //B button
+    private Button xboxX = new JoystickButton(xboxController, 3); //X button
+    private Button xboxY = new JoystickButton(xboxController, 4); //Y button
+    private Button xboxRB = new JoystickButton(xboxController, 6); //Right Bumper
+    private Button xboxLB = new JoystickButton(xboxController, 5); //Left Bumper
+    //private double xboxLX = xboxController.getRawAxis(0); //Left joystick x-axis
+    //private double xboxLY = xboxController.getRawAxis(1); //Left joystick y-axis
+    //private double xboxRX = xboxController.getRawAxis(4); //Right joystick x-axis
+    private double xboxRY = xboxController.getRawAxis(5); //Right joystick y-axis
+=======
     private Button driveTrigger = new JoystickButton(rightJoystick, 1);
     private Button driveStick2 = new JoystickButton(rightJoystick, 2); //Button 2 on the driveJoystick
     private Button driveStick3 = new JoystickButton(rightJoystick, 3);
@@ -30,11 +60,27 @@ public class OI {
     private double xboxLY = xboxController.getRawAxis(1); //Left joystick y-axis
     //private double xboxRX = xboxController.getRawAxis(4); //Right joystick x-axis
     //private double xboxRY = xboxController.getRawAxis(5); //Right joystick y-axis
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
     //private Button xboxStart = new JoystickButton(xboxController, 9); //Start button (not working)
     //xboxBack does not work
     //private double xboxLT = xboxController.getRawAxis(2); //Left trigger
     //private double xboxRT = xboxController.getRawAxis(3); //Right trigger
     
+<<<<<<< HEAD
+    public OI(){   	
+    	//driveStick2.whenPressed(new StartCamera1());
+    	//driveStick3.whenPressed(new StartCamera2());
+    	//xboxLB.whileHeld(new LaunchSolenoid());
+    	xboxRB.whileHeld(new ShooterWheelsOut());
+    	xboxLB.whileHeld(new ShooterWheelsIn());
+    	xboxA.whileHeld(new LaunchSolenoid());
+    	rightDriveStick3.whileHeld(new ArmSolenoidTopForward());
+    	rightDriveStick5.whileHeld(new ArmSolenoidTopReverse());
+    	rightDriveStick6.whileHeld(new ArmSolenoidDownForward());
+    	rightDriveStick4.whileHeld(new ArmSolenoidDownReverse());
+    	
+    	
+=======
     public OI(){
     	//TEMP
     	driveTrigger.whenPressed(new NAVXZeroYaw());
@@ -42,6 +88,7 @@ public class OI {
     	driveStick2.whenPressed(new StartCamera1());
     	driveStick3.whenPressed(new StartCamera2());
     	xboxLB.whileHeld(new LaunchSolenoid());
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
     }
     
     public Joystick getLeftJoystick() {
@@ -57,6 +104,14 @@ public class OI {
     }
     //Create deadzone?
     public double getXboxLeftJoystickYAxis(){
+<<<<<<< HEAD
+    	if(Math.abs(Robot.oi.xboxRY) < .25)
+    		return 0;
+    	else
+    		return Robot.oi.xboxRY;
+    }
+    
+=======
     	return deadZone(xboxLY);
     }
     
@@ -65,5 +120,6 @@ public class OI {
 			xboxAxis = 0.0;
     	return xboxAxis;
     }
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
 }
 

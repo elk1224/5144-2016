@@ -1,9 +1,18 @@
 
 package org.usfirst.frc.team5144.robot;
 
+<<<<<<< HEAD
+import org.usfirst.frc.team5144.robot.commands.AutoBasket;
+import org.usfirst.frc.team5144.robot.commands.AutoDriveAndShoot;
+import org.usfirst.frc.team5144.robot.commands.AutoPickUpBallAndShoot;
+import org.usfirst.frc.team5144.robot.commands.AutoShoot;
+import org.usfirst.frc.team5144.robot.commands.DriveForward;
+import org.usfirst.frc.team5144.robot.subsystems.Basket;
+=======
 import org.usfirst.frc.team5144.robot.commands.DriveForward;
 import org.usfirst.frc.team5144.robot.subsystems.Basket;
 import org.usfirst.frc.team5144.robot.subsystems.Camera;
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
 import org.usfirst.frc.team5144.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5144.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team5144.robot.subsystems.Shooter;
@@ -23,28 +32,48 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drivetrain;
 	public static Shooter shooter;
 	public static Basket basket;
+<<<<<<< HEAD
+	//public static Camera camera;
+=======
 	public static Camera camera;
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
 	public static Pneumatics pneumatics;
 
     Command autonomousCommand;
     SendableChooser chooser;
 
+<<<<<<< HEAD
+=======
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
     public void robotInit() {
     	pneumatics = new Pneumatics();
     	drivetrain = new DriveTrain();
     	shooter = new Shooter();
     	basket = new Basket();
+<<<<<<< HEAD
+    	//camera = new Camera();
+=======
     	camera = new Camera();
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
 		oi = new OI();
 		
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new WaitCommand(0));
+<<<<<<< HEAD
+        chooser.addObject("Test", new AutoBasket(2.4, .5));
+        chooser.addObject("Drive Auto", new DriveForward(2, .5));
+        chooser.addObject("Auto Shoot", new AutoShoot());
+        chooser.addObject("Drive and Shoot", new AutoDriveAndShoot());
+        chooser.addObject("Pick up and Shoot", new AutoPickUpBallAndShoot());
+        //chooser.addObject("Auto Line", new DriveForward(1.5, .75));
+=======
         chooser.addObject("Drive Auto", new DriveForward(2, .5));
         chooser.addObject("Auto Line", new DriveForward(1.5, .75));
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
         SmartDashboard.putData("Auto mode", chooser);
     }
 	
@@ -87,7 +116,12 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+<<<<<<< HEAD
+        //Robot.camera.startVision();
+        log();
+=======
         Robot.camera.startVision();
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
     }
     
     /**
@@ -99,7 +133,12 @@ public class Robot extends IterativeRobot {
     
     public void log(){
     	drivetrain.log();
+<<<<<<< HEAD
+    	//shooter.log();
+    	//basket.log();
+=======
     	shooter.log();
     	basket.log();
+>>>>>>> 93b87c528ea2c63f3787595ddb1b51170db0597b
     }
 }
