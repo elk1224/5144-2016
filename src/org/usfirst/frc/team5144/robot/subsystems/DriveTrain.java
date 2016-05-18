@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5144.robot.subsystems;
 
+import org.usfirst.frc.team5144.robot.Robot;
 import org.usfirst.frc.team5144.robot.RobotMap;
 import org.usfirst.frc.team5144.robot.commands.DriveWithJoysticks;
 
@@ -31,7 +32,7 @@ public class DriveTrain extends Subsystem {
 	//Move NAVX to its own separate subsystem with the commands
 	//pertaining to the subsystem in their own package
 	//NAVX
-	//private AHRS ahrs; 
+	private AHRS ahrs; 
 	
 	/**Define the command that the subsystem will default
 	 * to if it the subsystem is not being called by another command*/
@@ -48,7 +49,11 @@ public class DriveTrain extends Subsystem {
     	rightRearDrive = new Talon(RobotMap.rightRearDriveChannel);
     	drive = new RobotDrive(leftFrontDrive, leftRearDrive, rightFrontDrive, rightRearDrive);
     	ultrasonic = new AnalogInput(RobotMap.ultrasonicChannel);    	
-    	//ahrs = new AHRS(SerialPort.Port.kUSB);
+    	ahrs = new AHRS(SerialPort.Port.kUSB);
+    }
+    
+    public AHRS getNAVX(){
+    	return ahrs;
     }
     
     /**
@@ -60,10 +65,18 @@ public class DriveTrain extends Subsystem {
     	drive.arcadeDrive(-forward, -rotate);
     }
     //Check for flips
+    /**
+     * Runs the drive as arcade drive based on input from
+     * the joystick used in the function
+     * @param joy Joystick for the drive
+     */
     public void drive(Joystick joy){
     	drive.arcadeDrive(joy);
     }
     
+    /**
+     * Stops the robot
+     */
     public void stop(){
     	drive.arcadeDrive(0, 0);
     }
@@ -74,5 +87,11 @@ public class DriveTrain extends Subsystem {
     
     /**Output information to the smartdashboard*/
     public void log(){
+    	SmartDashboard.putBoolean(  "IMU_Connected",        ahrs.isConnected());
+        SmartDashboard.putBoolean(  "IMU_IsCalibrating",    ahrs.isCalibrating());
+        SmartDashboard.putNumber(   "IMU_Yaw",              ahrs.getYaw());
+        SmartDashboard.putNumber(   "IMU_Pitch",            ahrs.getPitch());
+        SmartDashboard.putNumber(   "IMU_Roll",             ahrs.getRoll());
+    	
     }
 }

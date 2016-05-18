@@ -1,7 +1,7 @@
 
 package org.usfirst.frc.team5144.robot;
 
-import org.usfirst.frc.team5144.robot.commands.AutoBasket;
+import org.usfirst.frc.team5144.robot.commands.AutoCenterDrive;
 import org.usfirst.frc.team5144.robot.commands.AutoDriveAndShoot;
 import org.usfirst.frc.team5144.robot.commands.AutoPickUpBallAndShoot;
 import org.usfirst.frc.team5144.robot.commands.AutoShoot;
@@ -52,13 +52,17 @@ public class Robot extends IterativeRobot {
 		 * are assigned to commands that will be called when autonomous starts*/
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new WaitCommand(0));
-        chooser.addObject("Test", new AutoBasket(2.4, .5));
+        //chooser.addObject("Test", new AutoBasket(2.4, .5));
         chooser.addObject("Drive Auto", new DriveForward(2, .5));
         chooser.addObject("Auto Shoot", new AutoShoot());
         chooser.addObject("Drive and Shoot", new AutoDriveAndShoot());
         chooser.addObject("Pick up and Shoot", new AutoPickUpBallAndShoot());
+        chooser.addObject("Center Drive Test", new AutoCenterDrive(5));
+        chooser.addObject("Anti-center drive", new DriveForward(5, -.75));
         //chooser.addObject("Auto Line", new DriveForward(1.5, .75));
         SmartDashboard.putData("Auto mode", chooser);
+        
+        Robot.drivetrain.getNAVX().zeroYaw();
     }
 	
 	/**called once each time the robot enters Disabled mode*/
@@ -82,17 +86,21 @@ public class Robot extends IterativeRobot {
         autonomousCommand = (Command) chooser.getSelected();
         //Starts the command if a selection has been made
         if (autonomousCommand != null) autonomousCommand.start();
+        Robot.drivetrain.getNAVX().zeroYaw();
     }
 
     /**called periodically while the robot is in Autonomous mode*/
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        log();
     }
     
     /**called once each time the robot enters TeleOperated mode*/
     public void teleopInit() {
 		//Stops the command from Autonomous mode if it is stil running
         if (autonomousCommand != null) autonomousCommand.cancel();
+        Robot.drivetrain.getNAVX().zeroYaw();
+        log();
     }
 
     /**called periodically while the robot is in TeleOperated mode*/
